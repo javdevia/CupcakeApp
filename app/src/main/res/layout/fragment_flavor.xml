@@ -20,12 +20,14 @@
     tools:context=".FlavorFragment">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.project.cupcakeappfinal.model.OrderViewModel" />
+
         <variable
             name="flavorFragment"
-            type="com.project.cupcakeappfinal.FlavorFragment"/>
+            type="com.project.cupcakeappfinal.FlavorFragment" />
     </data>
 
     <ScrollView
@@ -102,20 +104,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/side_margin"
+                android:text="@{@string/subtotal_price(viewModel.price)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/divider"
-                android:text="@{@string/subtotal_price(viewModel.price)}"
                 tools:text="Subtotal $5.00" />
 
             <Button
                 android:id="@+id/cancel_button"
-                android:layout_width="0dp"
                 style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/side_margin"
+                android:onClick="@{()-> flavorFragment.cancelOrder()}"
                 android:text="@string/cancel"
                 app:layout_constraintEnd_toStartOf="@id/next_button"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginEnd="@dimen/side_margin"
                 app:layout_constraintTop_toTopOf="@id/next_button" />
 
             <Button
@@ -123,11 +126,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/side_margin"
+                android:onClick="@{()-> flavorFragment.goToNextScreen()}"
                 android:text="@string/next"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/cancel_button"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:onClick="@{()-> flavorFragment.goToNextScreen()}"
+                app:layout_constraintStart_toEndOf="@id/cancel_button"
                 app:layout_constraintTop_toBottomOf="@id/subtotal" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
